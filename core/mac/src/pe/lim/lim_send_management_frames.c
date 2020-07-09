@@ -5339,16 +5339,13 @@ void lim_send_mgmt_frame_tx(tpAniSirGlobal mac_ctx,
 {
 	struct sir_mgmt_msg *mb_msg = (struct sir_mgmt_msg *)msg->bodyptr;
 	uint32_t msg_len;
-#ifdef WLAN_DEBUG
 	tpSirMacFrameCtl fc = (tpSirMacFrameCtl) mb_msg->data;
-#endif
 	uint8_t sme_session_id;
 	uint16_t auth_algo;
 
 	msg_len = mb_msg->msg_len - sizeof(*mb_msg);
 	pe_debug("sending fc->type: %d fc->subType: %d",
 		fc->type, fc->subType);
-
 	sme_session_id = mb_msg->session_id;
 	if (fc->subType == SIR_MAC_MGMT_AUTH) {
 		auth_algo = *(uint16_t *)(mb_msg->data +
