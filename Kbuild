@@ -2293,6 +2293,10 @@ ifdef WLAN_HDD_ADAPTER_MAGIC
 ccflags-y += -DWLAN_HDD_ADAPTER_MAGIC=$(WLAN_HDD_ADAPTER_MAGIC)
 endif
 
+# Compiler optimization setup
+ccflags-y += $(call cc-option, -g0)
+ccflags-y += $(call cc-option, -O2)
+
 # Determine if we are building against an arm architecture host
 ifeq ($(findstring arm, $(ARCH)),)
 	ccflags-y += -DWLAN_HOST_ARCH_ARM=0
